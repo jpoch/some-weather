@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { getRequest } from '../src/axiosHelper'
+import TemperatureChart from './components/TemperatureChart/TemperatureChart';
+import { useEffect, useState } from 'react';
+import { temperatureHelper } from './helpers/temperatureHelper';
+
 
 function App() {
+  const [locationWeather, setLocationWeather] = useState();
+
+  let count = 0;
+
+  useEffect(
+    () => {
+      async function fetchData() {
+        let data = await getRequest('https://api.weather.gov/gridpoints/BOU/63,61/forecast/hourly');
+        // console.log(data);
+        let temperatureData = temperatureHelper(data.properties.periods)
+        // console.log(temperatureData)
+        setLocationWeather(temperatureData);
+      }
+
+      if (count === 0) {
+        fetchData();
+        count++;
+      }
+
+    },
+    [count],
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TemperatureChart temperatureData={locationWeather} />
     </div>
   );
 }
