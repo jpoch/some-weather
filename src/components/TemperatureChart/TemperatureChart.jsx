@@ -95,7 +95,6 @@ const TemperatureChart = (props) => {
             pointFormat: "Dewpoint: {point.y}",
             xDateFormat: "%a, %b %e, %l%p",
           },
-          zIndex: 100000,
         },
         {
           name: "Humidity",
