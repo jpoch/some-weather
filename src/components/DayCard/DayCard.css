@@ -1,8 +1,16 @@
 .day-card {
   padding: 16px;
   height: 100px;
+  max-width: 300px;
+  min-width: 120px;
 }
 
 .day-card-content {
   height: 100%;
+}
+
+@media (max-width: 600px) {
+  .day-card {
+    width: 100%;
+  }
 }

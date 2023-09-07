@@ -1,4 +1,3 @@
-import Grid from "@mui/material/Unstable_Grid2";
 // import Card from "@mui/material/Card";
 // import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
@@ -7,82 +6,145 @@ import Typography from "@mui/material/Typography";
 import TemperatureChart from "../TemperatureChart/TemperatureChart";
 import "./DaySummary.css";
 import { DateTime } from "luxon";
+import Stack from "@mui/material/Stack";
+import DayCardSummary from "../DayCardSummary/DayCardSummary";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
 
 const DaysSummary = (props) => {
   const [temperatureData, setTemperatureData] = useState();
-  const [sunInfo, setSunInfo] = useState();
+  //   const [openPanels, setOpenPanels] = useState([]);
 
   useEffect(() => {
     if (props.temperatureData) {
+      console.log(props.temperatureData);
       setTemperatureData(props.temperatureData);
     }
   }, [props.temperatureData]);
 
-  useEffect(() => {
-    if (props.sunInfo) {
-      setSunInfo(props.sunInfo);
-    }
-  }, [props.sunInfo]);
+  //   let someArray = [];
 
-  //   useEffect(() => {
-  //     console.log(temperatureData);
-  //   }, [temperatureData]);
+  //   const accordionChange = (day) => (event, isExpanded) => {
+  //     if (isExpanded) {
+  //       console.log("open");
+  //       someArray.push(day);
+  //       console.log(someArray);
+  //       console.log("open end");
+  //     } else {
+  //       console.log("close");
+  //       someArray = _.without(someArray, day);
+  //       console.log(someArray);
+  //       console.log("close end");
+  //     }
+  //   };
+
+  //   const isPanelOpen = (day) => {
+  //     console.log(day);
+  //     console.log(someArray);
+  //     console.log(_.contains(someArray, day));
+  //     return _.contains(someArray, day);
+  //   };
 
   return (
-    <Grid container spacing={2}>
+    <div>
       {temperatureData &&
         temperatureData.daySummaries.map((day) => (
-          <Grid className="card-container" container>
-            <Grid xs={12}>
-              <Typography variant={"h6"}>{day.day}</Typography>
-            </Grid>
-            <Grid xs={12} sm={6} md={1}>
-              <DayCard heading={day.min} overhead={"Low"}></DayCard>
-            </Grid>
-            <Grid xs={12} sm={6} md={1}>
-              <DayCard heading={day.max} overhead={"High"}></DayCard>
-            </Grid>
-            <Grid xs={12} sm={6} md={3}>
-              <DayCard
-                headingSmall={day.shortForecast}
-                overhead="Forecast"
-              ></DayCard>
-            </Grid>
-            <Grid xs={12} sm={6} md={2}>
-              {day.precipitation !== 0 ? (
-                <DayCard
-                  heading={`${day.precipitation}%`}
-                  subtitle={`@ ${day.precipitationTime}`}
-                  overhead={"Precipitation"}
-                ></DayCard>
-              ) : (
-                <DayCard
-                  overhead={"Precipitation"}
-                  heading={"0%"}
-                  subtitle={"All day"}
-                ></DayCard>
+          <div>
+            <Accordion className="accordion-container">
+              <AccordionSummary justifyContent={"center"}>
+                <Stack direction={"column"} sx={{ width: "100%" }}>
+                  <Typography variant={"h6"}>{day.day}</Typography>
+
+                  <div className="card-summary-small">
+                    <DayCardSummary
+                      date={day.day}
+                      low={day.min}
+                      high={day.max}
+                      forecast={day.shortForecast}
+                      sunrise={DateTime.fromJSDate(
+                        day.sunInfo.sunrise
+                      ).toLocaleString(DateTime.TIME_SIMPLE)}
+                      sunset={DateTime.fromJSDate(
+                        day.sunInfo.sunset
+                      ).toLocaleString(DateTime.TIME_SIMPLE)}
+                    ></DayCardSummary>
+                  </div>
+
+                  <Stack
+                    justifyContent={"space-around"}
+                    direction={"row"}
+                    useFlexGap
+                    flexWrap="wrap"
+                    spacing={2}
+                    className="card-summary-large"
+                  >
+                    <div>
+                      <DayCard heading={day.min} overhead={"Low"}></DayCard>
+                    </div>
+                    <div>
+                      <DayCard heading={day.max} overhead={"High"}></DayCard>
+                    </div>
+                    <div>
+                      <DayCard
+                        headingSmall={day.shortForecast}
+                        overhead="Forecast"
+                      ></DayCard>
+                    </div>
+                    <div>
+                      {day.precipitation !== 0 ? (
+                        <DayCard
+                          heading={`${day.precipitation}%`}
+                          subtitle={`@ ${day.precipitationTime}`}
+                          overhead={"Precipitation"}
+                        ></DayCard>
+                      ) : (
+                        <DayCard
+                          overhead={"Precipitation"}
+                          heading={"0%"}
+                          subtitle={"All day"}
+                        ></DayCard>
+                      )}
+                    </div>
+                    <div>
+                      <DayCard
+                        overhead="Sunrise"
+                        headingSmall={DateTime.fromJSDate(
+                          day.sunInfo.sunrise
+                        ).toLocaleString(DateTime.TIME_SIMPLE)}
+                      ></DayCard>
+                    </div>
+                    <div>
+                      <DayCard
+                        overhead="Sunset"
+                        headingSmall={DateTime.fromJSDate(
+                          day.sunInfo.sunset
+                        ).toLocaleString(DateTime.TIME_SIMPLE)}
+                      ></DayCard>
+                    </div>
+                  </Stack>
+                </Stack>
+              </AccordionSummary>
+              <AccordionDetails>
+                {/* <DayCardSummary
+              date={day.day}
+              low={day.min}
+              high={day.max}
+              forecast={day.shortForecast}
+              sunrise={DateTime.fromJSDate(sunInfo.sunrise).toLocaleString(
+                DateTime.TIME_SIMPLE
               )}
-            </Grid>
-            <Grid xs={12} sm={6} md={2}>
-              <DayCard
-                overhead="Sunrise"
-                headingSmall={DateTime.fromJSDate(
-                  sunInfo.sunrise
-                ).toLocaleString(DateTime.TIME_SIMPLE)}
-              ></DayCard>
-            </Grid>
-            <Grid xs={12} sm={6} md={2}>
-              <DayCard
-                overhead="Sunset"
-                headingSmall={DateTime.fromJSDate(
-                  sunInfo.sunset
-                ).toLocaleString(DateTime.TIME_SIMPLE)}
-              ></DayCard>
-            </Grid>
-            <TemperatureChart temperatureData={day}></TemperatureChart>
-          </Grid>
+              sunset={DateTime.fromJSDate(sunInfo.sunset).toLocaleString(
+                DateTime.TIME_SIMPLE
+              )}
+            ></DayCardSummary> */}
+
+                <TemperatureChart temperatureData={day}></TemperatureChart>
+              </AccordionDetails>
+            </Accordion>
+          </div>
         ))}
-    </Grid>
+    </div>
   );
 };
 

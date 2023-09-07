@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import _ from "underscore";
+import { getTimes } from "suncalc";
 
 export const temperatureHelper = (data) => {
   console.log(data);
@@ -13,6 +14,8 @@ export const temperatureHelper = (data) => {
   });
 
   let daySummaries = _.map(groupedByDay, (day) => {
+    let sunInfo = getTimes(new Date(day[0].startTime), 39.74, -104.99);
+
     let dayTemps = _.map(day, (hour) => {
       return hour.temperature;
     });
@@ -22,13 +25,8 @@ export const temperatureHelper = (data) => {
         x: Date.parse(hour.startTime),
         y: hour.temperature,
         color: colorHelper(hour.temperature),
-        //   dataLabels: {
-
-        //   }
       };
     });
-
-    console.log(dailyChartData);
 
     let dailyChartDewPointData = day.map((hour) => {
       return {
@@ -37,8 +35,6 @@ export const temperatureHelper = (data) => {
         color: "blue",
       };
     });
-
-    console.log(dailyChartDewPointData);
 
     let dailyChartHumidityData = day.map((hour) => {
       return {
@@ -91,9 +87,9 @@ export const temperatureHelper = (data) => {
     //end
 
     let dailyNightPlotBands = plotBandHelper(day);
-
     return {
-      day: DateTime.fromISO(day[0].startTime).toLocaleString(),
+      day: DateTime.fromISO(day[0].startTime).toFormat("cccc, LLLL d"),
+      dayMS: day[0].startTime,
       max: Math.max(...dayTemps),
       min: Math.min(...dayTemps),
       precipitation: maxPrecipitation.value,
@@ -106,6 +102,7 @@ export const temperatureHelper = (data) => {
       precipitationData: dailyChartPrecipitationData,
       plotBands: dailyNightPlotBands,
       shortForecast: shortForecastMost[shortForecastMost.length - 1].forecast,
+      sunInfo: sunInfo,
     };
   });
 

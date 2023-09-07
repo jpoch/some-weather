@@ -1,3 +1,31 @@
-.card-container {
+.accordion-container {
+  margin-bottom: 16px;
+  box-shadow: none !important;
+}
+
+.card-summary-large {
   align-items: center;
+  margin-bottom: 24px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.card-summary-large div.day-card {
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .card-summary-large {
+    display: none !important;
+  }
+  .accordion-container {
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+      0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .card-summary-small {
+    display: none !important;
+  }
 }
