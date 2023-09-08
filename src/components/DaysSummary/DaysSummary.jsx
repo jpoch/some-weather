@@ -1,5 +1,3 @@
-// import Card from "@mui/material/Card";
-// import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import DayCard from "../DayCard/DayCard";
 import Typography from "@mui/material/Typography";
@@ -11,6 +9,7 @@ import DayCardSummary from "../DayCardSummary/DayCardSummary";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+// import Divider from "@mui/material/Divider";
 
 const DaysSummary = (props) => {
   const [temperatureData, setTemperatureData] = useState();
@@ -27,15 +26,8 @@ const DaysSummary = (props) => {
 
   //   const accordionChange = (day) => (event, isExpanded) => {
   //     if (isExpanded) {
-  //       console.log("open");
-  //       someArray.push(day);
-  //       console.log(someArray);
-  //       console.log("open end");
-  //     } else {
-  //       console.log("close");
-  //       someArray = _.without(someArray, day);
-  //       console.log(someArray);
-  //       console.log("close end");
+  //       // eslint-disable-next-line no-restricted-globals
+  //       location.hash = "#accordion" + day;
   //     }
   //   };
 
@@ -85,6 +77,7 @@ const DaysSummary = (props) => {
                     <div>
                       <DayCard heading={day.max} overhead={"High"}></DayCard>
                     </div>
+                    {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
                     <div>
                       <DayCard
                         headingSmall={day.shortForecast}
@@ -106,6 +99,7 @@ const DaysSummary = (props) => {
                         ></DayCard>
                       )}
                     </div>
+                    {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
                     <div>
                       <DayCard
                         overhead="Sunrise"

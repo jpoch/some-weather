@@ -2,11 +2,61 @@ import { DateTime } from "luxon";
 import _ from "underscore";
 import { getTimes } from "suncalc";
 
-export const temperatureHelper = (data) => {
-  console.log(data);
-
+export const getWeeklyData = (data) => {
   // create plot bands for nighttime
   let weeklyNightPlotBands = plotBandHelper(data);
+
+  //create max and min temps for chart
+  let temps = data.map((some) => {
+    return some.temperature;
+  });
+
+  let min = Math.min(...temps);
+  let max = Math.max(...temps);
+  //end
+
+  let weeklyTemperatureChartData = data.map((hour) => {
+    return {
+      x: Date.parse(hour.startTime),
+      y: hour.temperature,
+      color: colorHelper(hour.temperature),
+    };
+  });
+
+  let weeklyChartDewPointData = createSecondaryChartData(
+    data,
+    "dewpoint",
+    "blue"
+  );
+
+  let weeklyChartHumidityData = createSecondaryChartData(
+    data,
+    "relativeHumidity",
+    "green"
+  );
+
+  let weeklyChartPrecipitationData = createSecondaryChartData(
+    data,
+    "probabilityOfPrecipitation",
+    "white"
+  );
+
+  return {
+    temperatureData: weeklyTemperatureChartData,
+    dewPointData: weeklyChartDewPointData,
+    humidityData: weeklyChartHumidityData,
+    precipitationData: weeklyChartPrecipitationData,
+    min: min,
+    max: max,
+    plotBands: weeklyNightPlotBands,
+    // title: `${data[0].startTime} - ${
+    //   data[data.length - 1].startTime
+    // }`,
+  };
+};
+
+export const temperatureHelper = (data) => {
+  console.log(data);
 
   // create day summaries
   let groupedByDay = _.groupBy(data, (times) => {
@@ -14,8 +64,10 @@ export const temperatureHelper = (data) => {
   });
 
   let daySummaries = _.map(groupedByDay, (day) => {
+    //sunrise & sunset
     let sunInfo = getTimes(new Date(day[0].startTime), 39.74, -104.99);
 
+    //for max & min temps
     let dayTemps = _.map(day, (hour) => {
       return hour.temperature;
     });
@@ -28,30 +80,25 @@ export const temperatureHelper = (data) => {
       };
     });
 
-    let dailyChartDewPointData = day.map((hour) => {
-      return {
-        x: Date.parse(hour.startTime) + 1,
-        y: Math.round(tempToF(hour.dewpoint.value)),
-        color: "blue",
-      };
-    });
+    let dailyChartDewPointData = createSecondaryChartData(
+      day,
+      "dewpoint",
+      "blue"
+    );
 
-    let dailyChartHumidityData = day.map((hour) => {
-      return {
-        x: Date.parse(hour.startTime) + 2,
-        y: Math.round(hour.relativeHumidity.value),
-        color: "green",
-      };
-    });
+    let dailyChartHumidityData = createSecondaryChartData(
+      day,
+      "relativeHumidity",
+      "green"
+    );
 
-    let dailyChartPrecipitationData = day.map((hour) => {
-      return {
-        x: Date.parse(hour.startTime) + 3,
-        y: Math.round(hour.probabilityOfPrecipitation.value),
-        color: "white",
-      };
-    });
+    let dailyChartPrecipitationData = createSecondaryChartData(
+      day,
+      "probabilityOfPrecipitation",
+      "white"
+    );
 
+    //create max precipitation
     let dayPrecipitation = _.map(day, (hour) => {
       return {
         value: hour.probabilityOfPrecipitation.value,
@@ -59,13 +106,12 @@ export const temperatureHelper = (data) => {
       };
     });
 
-    // console.log(dayPrecipitation);
-
     let maxPrecipitation = _.max(dayPrecipitation, (hour) => {
       return hour.value;
     });
+    //end
 
-    //create short forecast most often
+    //create short forecast of most often on the day
     let shortForecasts = _.map(day, (hour) => {
       return hour.shortForecast;
     });
@@ -87,6 +133,7 @@ export const temperatureHelper = (data) => {
     //end
 
     let dailyNightPlotBands = plotBandHelper(day);
+
     return {
       day: DateTime.fromISO(day[0].startTime).toFormat("cccc, LLLL d"),
       dayMS: day[0].startTime,
@@ -96,7 +143,7 @@ export const temperatureHelper = (data) => {
       precipitationTime: DateTime.fromISO(maxPrecipitation.time).toLocaleString(
         DateTime.TIME_SIMPLE
       ),
-      data: dailyChartData,
+      temperatureData: dailyChartData,
       dewPointData: dailyChartDewPointData,
       humidityData: dailyChartHumidityData,
       precipitationData: dailyChartPrecipitationData,
@@ -105,9 +152,7 @@ export const temperatureHelper = (data) => {
       sunInfo: sunInfo,
     };
   });
-
-  console.log(daySummaries);
-  // end
+  // end daySummaries
 
   //create plot bands with alternating days
 
@@ -129,6 +174,11 @@ export const temperatureHelper = (data) => {
   //   });
   //end
 
+  //start data for week
+
+  // create plot bands for nighttime
+  let weeklyNightPlotBands = plotBandHelper(data);
+
   //create max and min temps for chart
   let temps = data.map((some) => {
     return some.temperature;
@@ -143,20 +193,44 @@ export const temperatureHelper = (data) => {
       x: Date.parse(hour.startTime),
       y: hour.temperature,
       color: colorHelper(hour.temperature),
-      //   dataLabels: {
-
-      //   }
     };
   });
 
+  let weeklyChartDewPointData = createSecondaryChartData(
+    data,
+    "dewpoint",
+    "blue"
+  );
+
+  let weeklyChartHumidityData = createSecondaryChartData(
+    data,
+    "relativeHumidity",
+    "green"
+  );
+
+  let weeklyChartPrecipitationData = createSecondaryChartData(
+    data,
+    "probabilityOfPrecipitation",
+    "white"
+  );
+
   return {
-    data: chartData,
+    temperatureData: chartData,
+    dewPointData: weeklyChartDewPointData,
+    humidityData: weeklyChartHumidityData,
+    precipitationData: weeklyChartPrecipitationData,
     min: min,
     max: max,
     plotBands: weeklyNightPlotBands,
     daySummaries: daySummaries,
+    title: `${daySummaries[0].day} - ${
+      daySummaries[daySummaries.length - 1].day
+    }`,
   };
+  //end week data
 };
+
+/// helpers
 
 const tempToF = (tempC) => {
   return tempC * 1.8 + 32;
@@ -166,7 +240,7 @@ const tempToC = (tempF) => {
   return (tempF - 32) / 1.8;
 };
 
-const colorHelper = (temp) => {
+export const colorHelper = (temp) => {
   if (temp < 0) {
     return "#0D40C1";
   } else if (temp >= 0 && temp < 20) {
@@ -239,4 +313,17 @@ const plotBandHelper = (data) => {
   }
 
   return nightPlotBands;
+};
+
+const createSecondaryChartData = (data, type, color) => {
+  return data.map((hour) => {
+    return {
+      x: Date.parse(hour.startTime),
+      y:
+        type === "dewpoint"
+          ? Math.round(tempToF(hour.dewpoint.value))
+          : Math.round(hour[type].value),
+      color: color,
+    };
+  });
 };

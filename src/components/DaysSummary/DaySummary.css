@@ -12,6 +12,7 @@
 
 .card-summary-large div.day-card {
   box-shadow: none;
+  background-color: transparent;
 }
 
 @media (max-width: 600px) {

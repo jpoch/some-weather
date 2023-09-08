@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   padding: 24px;
+  padding-bottom: 72px;
 }
 
 .App-logo {
@@ -27,6 +28,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.highcharts-credits {
+  display: none !important;
 }
 
 @keyframes App-logo-spin {

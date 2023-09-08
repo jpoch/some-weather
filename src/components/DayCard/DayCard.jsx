@@ -5,14 +5,6 @@ import "./DayCard.css";
 import Stack from "@mui/material/Stack";
 
 const DayCard = (props) => {
-  // useEffect(() => {
-  //   if (props.temperatureData) {
-  //     setChartProps(formOptions(props));
-  //   }
-  // }, [props]);
-
-  // const [chartProps, setChartProps] = useState();
-
   return (
     <Card className="day-card">
       {/* <CardContent> */}

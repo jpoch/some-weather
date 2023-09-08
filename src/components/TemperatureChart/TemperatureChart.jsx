@@ -37,9 +37,9 @@ const TemperatureChart = (props) => {
           minHeight: 400,
         },
       },
-      // title: {
-      //   text: props.some ? props.some : "Generic Name",
-      // },
+      title: {
+        text: props.temperatureData.title ? props.temperatureData.title : "",
+      },
       time: {
         timezoneOffset: timezoneOffset,
       },
@@ -67,7 +67,7 @@ const TemperatureChart = (props) => {
       series: [
         {
           name: "Temperature",
-          data: props.temperatureData.data,
+          data: props.temperatureData.temperatureData,
           type: "column",
           tooltip: {
             valueSuffix: "°F",
