@@ -55,9 +55,7 @@ export const getWeeklyData = (data) => {
   };
 };
 
-export const temperatureHelper = (data) => {
-  console.log(data);
-
+export const temperatureHelper = (data, locationInfo) => {
   // create day summaries
   let groupedByDay = _.groupBy(data, (times) => {
     return DateTime.fromISO(times.startTime).c.day;
@@ -65,7 +63,11 @@ export const temperatureHelper = (data) => {
 
   let daySummaries = _.map(groupedByDay, (day) => {
     //sunrise & sunset
-    let sunInfo = getTimes(new Date(day[0].startTime), 39.74, -104.99);
+    let sunInfo = getTimes(
+      new Date(day[0].startTime),
+      locationInfo.lat,
+      locationInfo.lon
+    );
 
     //for max & min temps
     let dayTemps = _.map(day, (hour) => {

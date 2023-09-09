@@ -7,7 +7,7 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 
 export const getIcon = (status) => {
   if (
-    status.toLowerCase() === "sunny" ||
+    status.toLowerCase().includes("sunny") ||
     status.toLowerCase().includes("clear")
   ) {
     return <WbSunnyIcon sx={{ color: "#fcdb32" }} />;
@@ -24,7 +24,7 @@ export const getIcon = (status) => {
   }
 
   if (status.toLowerCase().includes("cloudy")) {
-    return <CloudIcon />;
+    return <CloudIcon sx={{ color: "#90bde5" }} />;
   }
 
   return <QuestionMarkIcon />;

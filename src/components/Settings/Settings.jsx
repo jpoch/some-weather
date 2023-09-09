@@ -8,16 +8,21 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { addLocation, removeLocation } from "../../helpers/localStorageHelper";
+import {
+  addLocation,
+  removeLocation,
+  updateDefaultLocation,
+} from "../../helpers/localStorageHelper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import _ from "underscore";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import IconButton from "@mui/material/IconButton";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import SettingsIcon from "@mui/icons-material/Settings";
+import HomeIcon from "@mui/icons-material/Home";
+import AddHomeIcon from "@mui/icons-material/AddHome";
 
 const Settings = (props) => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -47,9 +52,15 @@ const Settings = (props) => {
     <>
       <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
         <Toolbar>
+          <Typography variant={"body1"}>
+            {props.currentLocation.city}
+            {", "}
+            {props.currentLocation.state}
+          </Typography>
           <IconButton
             sx={{ position: "fixed", right: "16px" }}
             onClick={() => {
+              props.updateLocationsList();
               setIsSettingsOpen(true);
             }}
           >
@@ -80,22 +91,26 @@ const Settings = (props) => {
               </RadioGroup>
             </FormControl>
             <Typography variant={"body1"}>
-              Current Location: {props.defaultLocation.city}{" "}
-              {props.defaultLocation.state}
+              Current Location: {props.currentLocation.city}
+              {", "}
+              {props.currentLocation.state}
             </Typography>
             <Typography variant={"body1"}>Saved Locations:</Typography>
             {props.allLocations.map((location) => (
               <Stack direction={"row"} alignItems={"center"}>
-                <Typography variant={"subtitle"}>
-                  {location.city} {location.state}
-                </Typography>
                 <IconButton>
-                  <RemoveCircleOutlineIcon
-                    onClick={() => {
-                      removeLocation(location);
+                  <HighlightOffIcon
+                    onClick={async () => {
+                      await removeLocation(location);
+                      props.updateLocationsList();
                     }}
+                    sx={{ color: "red" }}
                   />
                 </IconButton>
+
+                <Typography variant={"subtitle"}>
+                  {location.city}, {location.state}
+                </Typography>
                 <Button>
                   <Typography
                     variant={"subtitle"}
@@ -107,10 +122,22 @@ const Settings = (props) => {
                     Use
                   </Typography>
                 </Button>
+                {location.isDefault ? (
+                  <HomeIcon />
+                ) : (
+                  <IconButton
+                    onClick={async () => {
+                      await updateDefaultLocation(location);
+                      props.updateLocationsList();
+                    }}
+                  >
+                    <AddHomeIcon />
+                  </IconButton>
+                )}
               </Stack>
             ))}
             <div>
-              <Typography variant={"body1"}>Add Locations:</Typography>
+              <Typography variant={"body1"}>New Location:</Typography>
               <TextField
                 label="Latitude"
                 type={"number"}
@@ -126,8 +153,11 @@ const Settings = (props) => {
                 }}
               ></TextField>
               <IconButton
-                onClick={() => {
-                  addLocation(newLocationValue);
+                onClick={async () => {
+                  let newLocationObj = await addLocation(newLocationValue);
+                  console.log("done");
+                  props.fetchData(newLocationObj);
+                  setIsSettingsOpen(false);
                 }}
               >
                 <AddCircleOutlineIcon />
@@ -135,8 +165,13 @@ const Settings = (props) => {
             </div>
 
             <div>
-              <Button>Cancel</Button>
-              <Button>Save</Button>
+              <Button
+                onClick={() => {
+                  setIsSettingsOpen(false);
+                }}
+              >
+                Close
+              </Button>
             </div>
           </Stack>
         </Box>
