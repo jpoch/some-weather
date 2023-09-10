@@ -2,6 +2,7 @@
   "name": "some-weather",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jpoch.github.io/some-weather",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -11,6 +12,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
+    "gh-pages": "^6.0.0",
     "highcharts": "^11.1.0",
     "highcharts-react-official": "^3.2.1",
     "luxon": "^3.4.2",
@@ -25,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
