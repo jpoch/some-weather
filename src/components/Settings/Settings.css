@@ -1,0 +1,11 @@
+.App .appbar-container {
+  /* background-color: #5b7865; */
+  background-color: #58508d;
+  color: #fafafa;
+  top: auto;
+  bottom: 0;
+}
+
+.App .appbar-container .MuiToolbar-root {
+  height: 50px;
+}

@@ -16,12 +16,8 @@ function App() {
   const [locationWeather, setLocationWeather] = useState();
   const [weeklyWeatherData, setWeeklyWeatherData] = useState();
   const [daySummaries, setDaySummaries] = useState();
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  // const [defaultLocation, setDefaultLocation] = useState({});
   const [allLocations, setAllLocations] = useState([]);
   const [currentLocation, setCurrentLocation] = useState({});
-  // const [newLocationValue, setNewLocationValue] = useState({});
-  // const [settings, setSettingsOpen] = useState();
 
   let count = 0;
   useEffect(
@@ -53,7 +49,6 @@ function App() {
     //     periods: mockWeatherApiResponse()
     //   }
     // };
-    console.log(location)
     let temperatureData = temperatureHelper(data.properties.periods, location)
     let weeklyData = getWeeklyData(data.properties.periods);
     setDaySummaries(temperatureData.daySummaries)

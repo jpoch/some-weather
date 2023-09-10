@@ -16,11 +16,13 @@ const TemperatureChart = (props) => {
 
   const renderChart = () => {
     return (
-      <HighchartsReact
-        highcharts={Highcharts}
-        constructorType={"chart"}
-        options={chartProps}
-      />
+      <div className="temperature-chart-container">
+        <HighchartsReact
+          highcharts={Highcharts}
+          constructorType={"chart"}
+          options={chartProps}
+        />
+      </div>
     );
   };
 
@@ -32,6 +34,7 @@ const TemperatureChart = (props) => {
     const options = {
       chart: {
         // type: "column",
+        // backgroundColor: "#FFD1B6",
         scrollablePlotArea: {
           minWidth: 900,
           minHeight: 400,
@@ -81,6 +84,8 @@ const TemperatureChart = (props) => {
           data: props.temperatureData.dewPointData,
           type: "line",
           visible: !tempOnly,
+          lineWidth: 3,
+          color: "#69787D",
           events: {
             hide: () => {
               setTempOnly(true);
@@ -101,6 +106,8 @@ const TemperatureChart = (props) => {
           data: props.temperatureData.humidityData,
           type: "line",
           visible: !tempOnly,
+          lineWidth: 3,
+          color: "#81A540",
           events: {
             hide: () => {
               setTempOnly(true);
@@ -120,6 +127,8 @@ const TemperatureChart = (props) => {
           data: props.temperatureData.precipitationData,
           type: "line",
           visible: !tempOnly,
+          lineWidth: 3,
+          color: "#B26E45",
           events: {
             hide: () => {
               setTempOnly(true);

@@ -3,7 +3,20 @@
   box-shadow: none !important;
 }
 
+.accordion-container .MuiTypography-subtitle1,
+.accordion-container .MuiTypography-h6 {
+  color: #ff6361;
+}
+
+.accordion-container .MuiTypography-h5,
+.accordion-container .MuiTypography-h4 {
+  color: #003f5c;
+}
+
 .card-summary-large {
+  /* background-color: #fafafa; */
+  background-color: #c0a98025;
+
   align-items: center;
   margin-bottom: 24px;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),

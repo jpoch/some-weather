@@ -12,7 +12,6 @@ const DayCardSummary = (props) => {
       flexWrap="wrap"
       spacing={2}
     >
-      {/* <Typography variant={"subtitle1"}>{props.date}</Typography> */}
       <Typography variant={"subtitle1"}>Low: {props.low}</Typography>
       <Typography variant={"subtitle1"}>High: {props.high}</Typography>
       <Typography variant={"subtitle1"}>Forecast: {props.forecast}</Typography>

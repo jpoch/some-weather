@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import "./Settings.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -50,7 +51,7 @@ const Settings = (props) => {
 
   return (
     <>
-      <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
+      <AppBar position="fixed" className="appbar-container">
         <Toolbar>
           <Typography variant={"body1"}>
             {props.currentLocation.city}
@@ -64,7 +65,7 @@ const Settings = (props) => {
               setIsSettingsOpen(true);
             }}
           >
-            <SettingsIcon />{" "}
+            <SettingsIcon sx={{ color: "#fafafa" }} />{" "}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -76,7 +77,7 @@ const Settings = (props) => {
         <Box className="settings-drawer-container">
           <Stack direction={"column"}>
             <Typography variant={"h6"}>Settings</Typography>
-            <FormControl>
+            {/* <FormControl>
               <FormLabel id="demo-radio-buttons-group-label">
                 <Typography variant={"body1"}>Temperature Unit:</Typography>
               </FormLabel>
@@ -89,12 +90,39 @@ const Settings = (props) => {
                 <FormControlLabel value="f" control={<Radio />} label="F" />
                 <FormControlLabel value="c" control={<Radio />} label="C" />
               </RadioGroup>
-            </FormControl>
+            </FormControl> */}
             <Typography variant={"body1"}>
               Current Location: {props.currentLocation.city}
               {", "}
               {props.currentLocation.state}
             </Typography>
+            <div>
+              <Typography variant={"body1"}>New Location:</Typography>
+              <TextField
+                label="Latitude"
+                type={"number"}
+                onChange={(event) => {
+                  setNewLocation(event.target.value, "lat");
+                }}
+              ></TextField>
+              <TextField
+                label="Longitude"
+                type={"number"}
+                onChange={(event) => {
+                  setNewLocation(event.target.value, "lon");
+                }}
+              ></TextField>
+              <IconButton
+                onClick={async () => {
+                  let newLocationObj = await addLocation(newLocationValue);
+                  console.log("done");
+                  props.fetchData(newLocationObj);
+                  setIsSettingsOpen(false);
+                }}
+              >
+                <AddCircleOutlineIcon />
+              </IconButton>
+            </div>
             <Typography variant={"body1"}>Saved Locations:</Typography>
             {props.allLocations.map((location) => (
               <Stack direction={"row"} alignItems={"center"}>
@@ -136,33 +164,6 @@ const Settings = (props) => {
                 )}
               </Stack>
             ))}
-            <div>
-              <Typography variant={"body1"}>New Location:</Typography>
-              <TextField
-                label="Latitude"
-                type={"number"}
-                onChange={(event) => {
-                  setNewLocation(event.target.value, "lat");
-                }}
-              ></TextField>
-              <TextField
-                label="Longitude"
-                type={"number"}
-                onChange={(event) => {
-                  setNewLocation(event.target.value, "lon");
-                }}
-              ></TextField>
-              <IconButton
-                onClick={async () => {
-                  let newLocationObj = await addLocation(newLocationValue);
-                  console.log("done");
-                  props.fetchData(newLocationObj);
-                  setIsSettingsOpen(false);
-                }}
-              >
-                <AddCircleOutlineIcon />
-              </IconButton>
-            </div>
 
             <div>
               <Button

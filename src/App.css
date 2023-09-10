@@ -1,3 +1,5 @@
+/* #003f5c, #58508d, #bc5090, #ff6361, #ffa600, #805300, #c0a980, #8097c0, #c08097 #97c080. */
+
 .App {
   text-align: center;
   padding: 24px;
@@ -9,9 +11,19 @@
   pointer-events: none;
 }
 
+.temperature-chart-container {
+  padding: 18px 32px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media (max-width: 768px) {
+  .temperature-chart-container {
+    display: none;
   }
 }
 

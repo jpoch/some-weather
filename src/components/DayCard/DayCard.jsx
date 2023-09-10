@@ -14,11 +14,9 @@ const DayCard = (props) => {
         justifyContent={"center"}
       >
         <Typography variant={"subtitle1"}>{props.overhead}</Typography>
-        {props.overhead ? (
-          <Typography variant={"h4"}>{props.heading}</Typography>
-        ) : (
-          <Typography variant={"h3"}>{props.heading}</Typography>
-        )}
+        <Typography variant={"h4"} style={{ color: props.headingColor }}>
+          {props.heading}
+        </Typography>
         <Typography variant={"h5"}>{props.headingSmall}</Typography>
         <Typography variant={"subtitle1"}>{props.subtitle}</Typography>
       </Stack>

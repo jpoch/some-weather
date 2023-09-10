@@ -1,4 +1,9 @@
 .weekly-summary-container .split-card {
   padding: 8px 12px;
+  background-color: #fafafa;
   margin-bottom: 12px;
+  /* color: #5b3832; */
+  color: #58508d;
+  box-shadow: 0px 2px 1px -1px #5b383240, 0px 1px 1px 0px #5b383240,
+    0px 1px 3px 0px #5b383240;
 }

@@ -98,12 +98,12 @@ const defaultLocation = () => {
     "weatherLocations",
     JSON.stringify([
       {
-        lat: 39.74,
-        lon: -104.99,
+        lat: 39.73915,
+        lon: -104.9847,
         apiEndpoint:
           "https://api.weather.gov/gridpoints/BOU/71,60/forecast/hourly",
         isDefault: true,
-        city: "Glendale",
+        city: "Denver",
         state: "CO",
         timeZone: "America/Denver",
       },

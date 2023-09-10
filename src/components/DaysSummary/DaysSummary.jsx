@@ -9,7 +9,6 @@ import DayCardSummary from "../DayCardSummary/DayCardSummary";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-// import Divider from "@mui/material/Divider";
 
 const DaysSummary = (props) => {
   const [temperatureData, setTemperatureData] = useState();
@@ -77,7 +76,6 @@ const DaysSummary = (props) => {
                     <div>
                       <DayCard heading={day.max} overhead={"High"}></DayCard>
                     </div>
-                    {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
                     <div>
                       <DayCard
                         headingSmall={day.shortForecast}
@@ -99,7 +97,6 @@ const DaysSummary = (props) => {
                         ></DayCard>
                       )}
                     </div>
-                    {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
                     <div>
                       <DayCard
                         overhead="Sunrise"

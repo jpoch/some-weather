@@ -26,19 +26,19 @@ export const getWeeklyData = (data) => {
   let weeklyChartDewPointData = createSecondaryChartData(
     data,
     "dewpoint",
-    "blue"
+    "69787D"
   );
 
   let weeklyChartHumidityData = createSecondaryChartData(
     data,
     "relativeHumidity",
-    "green"
+    "81A540"
   );
 
   let weeklyChartPrecipitationData = createSecondaryChartData(
     data,
     "probabilityOfPrecipitation",
-    "white"
+    "B26E45"
   );
 
   return {
@@ -85,13 +85,13 @@ export const temperatureHelper = (data, locationInfo) => {
     let dailyChartDewPointData = createSecondaryChartData(
       day,
       "dewpoint",
-      "blue"
+      "white"
     );
 
     let dailyChartHumidityData = createSecondaryChartData(
       day,
       "relativeHumidity",
-      "green"
+      "white"
     );
 
     let dailyChartPrecipitationData = createSecondaryChartData(
@@ -201,7 +201,7 @@ export const temperatureHelper = (data, locationInfo) => {
   let weeklyChartDewPointData = createSecondaryChartData(
     data,
     "dewpoint",
-    "blue"
+    "#415E4B"
   );
 
   let weeklyChartHumidityData = createSecondaryChartData(
