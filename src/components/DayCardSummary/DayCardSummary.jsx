@@ -5,18 +5,28 @@ const DayCardSummary = (props) => {
   return (
     // <Card className="day-card">
     <Stack
-      className="day-card-content"
+      className="day-card-summary-content"
       direction={"row"}
       justifyContent={"space-evenly"}
       useFlexGap
       flexWrap="wrap"
       spacing={2}
     >
-      <Typography variant={"subtitle1"}>Low: {props.low}</Typography>
-      <Typography variant={"subtitle1"}>High: {props.high}</Typography>
-      <Typography variant={"subtitle1"}>Forecast: {props.forecast}</Typography>
-      <Typography variant={"subtitle1"}>Sunrise: {props.sunrise}</Typography>
-      <Typography variant={"subtitle1"}>Sunset: {props.sunset}</Typography>
+      <Typography variant={"subtitle1"}>
+        Low: <span className="value">{props.low}</span>
+      </Typography>
+      <Typography variant={"subtitle1"}>
+        High: <span className="value">{props.high}</span>
+      </Typography>
+      <Typography variant={"subtitle1"}>
+        Forecast: <span className="value">{props.forecast}</span>
+      </Typography>
+      <Typography variant={"subtitle1"}>
+        Sunrise: <span className="value">{props.sunrise}</span>
+      </Typography>
+      <Typography variant={"subtitle1"}>
+        Sunset: <span className="value">{props.sunset}</span>
+      </Typography>
     </Stack>
     // </Card>
   );

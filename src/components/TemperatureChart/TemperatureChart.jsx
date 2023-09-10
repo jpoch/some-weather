@@ -16,13 +16,11 @@ const TemperatureChart = (props) => {
 
   const renderChart = () => {
     return (
-      <div className="temperature-chart-container">
-        <HighchartsReact
-          highcharts={Highcharts}
-          constructorType={"chart"}
-          options={chartProps}
-        />
-      </div>
+      <HighchartsReact
+        highcharts={Highcharts}
+        constructorType={"chart"}
+        options={chartProps}
+      />
     );
   };
 

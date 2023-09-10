@@ -66,7 +66,9 @@ function App() {
     <div className="App">
       <Stack direction={'column'} spacing={4}>
         <WeeklySummary weeklyData={daySummaries} />
-        <TemperatureChart temperatureData={weeklyWeatherData} />
+        <div className='temperature-chart-container'>
+          <TemperatureChart temperatureData={weeklyWeatherData} />
+        </div>
         <DaysSummary temperatureData={locationWeather} />
       </Stack>
 

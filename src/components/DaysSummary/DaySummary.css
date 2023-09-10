@@ -13,6 +13,15 @@
   color: #003f5c;
 }
 
+.accordion-container .day-card-summary-content .MuiTypography-subtitle1,
+.accordion-container .day-card-summary-content .MuiTypography-h6 {
+  color: #ff6361;
+}
+
+.accordion-container .day-card-summary-content .MuiTypography-subtitle1 .value {
+  color: #003f5c;
+}
+
 .card-summary-large {
   /* background-color: #fafafa; */
   background-color: #c0a98025;
