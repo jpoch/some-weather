@@ -16,7 +16,6 @@ const DaysSummary = (props) => {
 
   useEffect(() => {
     if (props.temperatureData) {
-      console.log(props.temperatureData);
       setTemperatureData(props.temperatureData);
     }
   }, [props.temperatureData]);
@@ -41,9 +40,9 @@ const DaysSummary = (props) => {
     <div>
       {temperatureData &&
         temperatureData.daySummaries.map((day) => (
-          <div>
+          <div key={day.day}>
             <Accordion className="accordion-container">
-              <AccordionSummary justifyContent={"center"}>
+              <AccordionSummary>
                 <Stack direction={"column"} sx={{ width: "100%" }}>
                   <Typography variant={"h6"}>{day.day}</Typography>
 

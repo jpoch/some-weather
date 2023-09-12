@@ -4,11 +4,6 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import "./Settings.css";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import {
   addLocation,
   removeLocation,
@@ -31,10 +26,6 @@ const Settings = (props) => {
   //   const [allLocations, setAllLocations] = useState([]);
   const [newLocationValue, setNewLocationValue] = useState({});
 
-  useEffect(() => {
-    console.log(props.allLocations);
-  }, [props.allLocations]);
-
   const setNewLocation = (value, type) => {
     if (type === "lat") {
       setNewLocationValue({
@@ -53,11 +44,23 @@ const Settings = (props) => {
     <>
       <AppBar position="fixed" className="appbar-container">
         <Toolbar>
-          <Typography variant={"body1"}>
+          <Typography className="current-weather-text" variant={"body1"}>
             {props.currentLocation.city}
             {", "}
             {props.currentLocation.state}
+            {" - "}
+            {props.currentWeather.temp}
+            {"°F and "}
+            {props.currentWeather.shortForecast}
+            {" - "}
+            {props.currentWeather.precipitation}
+            {"% precipitation, "}
+            {props.currentWeather.humidity}
+            {"% humidity, and "}
+            {props.currentWeather.dewpoint}
+            {"°F dewpoint "}
           </Typography>
+
           <IconButton
             sx={{ position: "fixed", right: "16px" }}
             onClick={() => {
@@ -115,7 +118,6 @@ const Settings = (props) => {
               <IconButton
                 onClick={async () => {
                   let newLocationObj = await addLocation(newLocationValue);
-                  console.log("done");
                   props.fetchData(newLocationObj);
                   setIsSettingsOpen(false);
                 }}
@@ -125,30 +127,30 @@ const Settings = (props) => {
             </div>
             <Typography variant={"body1"}>Saved Locations:</Typography>
             {props.allLocations.map((location) => (
-              <Stack direction={"row"} alignItems={"center"}>
-                <IconButton>
-                  <HighlightOffIcon
-                    onClick={async () => {
-                      await removeLocation(location);
-                      props.updateLocationsList();
-                    }}
-                    sx={{ color: "red" }}
-                  />
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                key={location.lon + location.lat}
+              >
+                <IconButton
+                  onClick={async () => {
+                    await removeLocation(location);
+                    props.updateLocationsList();
+                  }}
+                >
+                  <HighlightOffIcon sx={{ color: "red" }} />
                 </IconButton>
 
                 <Typography variant={"subtitle"}>
                   {location.city}, {location.state}
                 </Typography>
-                <Button>
-                  <Typography
-                    variant={"subtitle"}
-                    onClick={() => {
-                      props.fetchData(location);
-                      setIsSettingsOpen(false);
-                    }}
-                  >
-                    Use
-                  </Typography>
+                <Button
+                  onClick={() => {
+                    props.fetchData(location);
+                    setIsSettingsOpen(false);
+                  }}
+                >
+                  <Typography variant={"subtitle"}>Use</Typography>
                 </Button>
                 {location.isDefault ? (
                   <HomeIcon />

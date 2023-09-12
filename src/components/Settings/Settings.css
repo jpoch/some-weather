@@ -7,5 +7,10 @@
 }
 
 .App .appbar-container .MuiToolbar-root {
-  height: 50px;
+  min-height: 50px;
+}
+
+.App .appbar-container .current-weather-text {
+  width: 85%;
+  text-align: left;
 }

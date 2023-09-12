@@ -18,6 +18,7 @@ function App() {
   const [daySummaries, setDaySummaries] = useState();
   const [allLocations, setAllLocations] = useState([]);
   const [currentLocation, setCurrentLocation] = useState({});
+  const [currentWeather, setCurrentWeather] = useState({});
 
   let count = 0;
   useEffect(
@@ -40,6 +41,10 @@ function App() {
     [count],
   );
 
+  const tempToF = (tempC) => {
+    return Math.round(tempC * 1.8 + 32);
+  };
+
 
   const fetchData = async (location) => {
     setCurrentLocation(location)
@@ -54,6 +59,13 @@ function App() {
     setDaySummaries(temperatureData.daySummaries)
     setWeeklyWeatherData(weeklyData)
     setLocationWeather(temperatureData);
+    setCurrentWeather({
+      temp: data.properties.periods[0].temperature,
+      shortForecast: data.properties.periods[0].shortForecast,
+      precipitation: data.properties.periods[0].probabilityOfPrecipitation.value,
+      humidity: data.properties.periods[0].relativeHumidity.value,
+      dewpoint: tempToF(data.properties.periods[0].dewpoint.value),
+    })
 
   }
 
@@ -72,7 +84,7 @@ function App() {
         <DaysSummary temperatureData={locationWeather} />
       </Stack>
 
-      <Settings fetchData={fetchData} updateLocationsList={updateLocationsList} allLocations={allLocations} currentLocation={currentLocation} />
+      <Settings fetchData={fetchData} updateLocationsList={updateLocationsList} allLocations={allLocations} currentLocation={currentLocation} currentWeather={currentWeather} />
     </div >
   );
 }

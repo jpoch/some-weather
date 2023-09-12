@@ -6,7 +6,6 @@ export const getLocationData = () => {
     !sessionStorage["weatherLocations"] ||
     JSON.parse(sessionStorage.getItem("weatherLocations")).length === 0
   ) {
-    console.log("get here");
     //set default location
     defaultLocation();
   }

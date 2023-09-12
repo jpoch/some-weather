@@ -33,6 +33,7 @@ const WeeklySummary = (props) => {
             bottomHeading={day.min}
             icon={getIcon(day.shortForecast)}
             iconInfo={getIconInfo(day.shortForecast, day.precipitation)}
+            key={day.dayMS}
           />
         ))}
     </Stack>
