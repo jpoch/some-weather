@@ -154,6 +154,10 @@ export const temperatureHelper = (data, locationInfo) => {
       sunInfo: sunInfo,
     };
   });
+
+  daySummaries = _.sortBy(daySummaries, function (day) {
+    return day.dayMS;
+  });
   // end daySummaries
 
   //create plot bands with alternating days
