@@ -6,7 +6,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T06:00:00-06:00",
       endTime: "2023-09-07T07:00:00-06:00",
       isDaytime: true,
-      temperature: 58,
+      temperature: -10,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -33,7 +33,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T07:00:00-06:00",
       endTime: "2023-09-07T08:00:00-06:00",
       isDaytime: true,
-      temperature: 60,
+      temperature: -5,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -60,7 +60,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T08:00:00-06:00",
       endTime: "2023-09-07T09:00:00-06:00",
       isDaytime: true,
-      temperature: 64,
+      temperature: 4,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -87,7 +87,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T09:00:00-06:00",
       endTime: "2023-09-07T10:00:00-06:00",
       isDaytime: true,
-      temperature: 69,
+      temperature: 6,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -114,7 +114,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T10:00:00-06:00",
       endTime: "2023-09-07T11:00:00-06:00",
       isDaytime: true,
-      temperature: 76,
+      temperature: 8,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -141,7 +141,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T11:00:00-06:00",
       endTime: "2023-09-07T12:00:00-06:00",
       isDaytime: true,
-      temperature: 80,
+      temperature: 10,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -168,7 +168,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T12:00:00-06:00",
       endTime: "2023-09-07T13:00:00-06:00",
       isDaytime: true,
-      temperature: 83,
+      temperature: 12,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -195,7 +195,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T13:00:00-06:00",
       endTime: "2023-09-07T14:00:00-06:00",
       isDaytime: true,
-      temperature: 85,
+      temperature: 14,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -222,7 +222,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T14:00:00-06:00",
       endTime: "2023-09-07T15:00:00-06:00",
       isDaytime: true,
-      temperature: 86,
+      temperature: 16,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -249,7 +249,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T15:00:00-06:00",
       endTime: "2023-09-07T16:00:00-06:00",
       isDaytime: true,
-      temperature: 87,
+      temperature: 18,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -276,7 +276,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T16:00:00-06:00",
       endTime: "2023-09-07T17:00:00-06:00",
       isDaytime: true,
-      temperature: 88,
+      temperature: 20,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -303,7 +303,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T17:00:00-06:00",
       endTime: "2023-09-07T18:00:00-06:00",
       isDaytime: true,
-      temperature: 89,
+      temperature: 22,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -330,7 +330,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T18:00:00-06:00",
       endTime: "2023-09-07T19:00:00-06:00",
       isDaytime: false,
-      temperature: 87,
+      temperature: 28,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -357,7 +357,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T19:00:00-06:00",
       endTime: "2023-09-07T20:00:00-06:00",
       isDaytime: false,
-      temperature: 83,
+      temperature: 31,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -384,7 +384,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T20:00:00-06:00",
       endTime: "2023-09-07T21:00:00-06:00",
       isDaytime: false,
-      temperature: 79,
+      temperature: 36,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -411,7 +411,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T21:00:00-06:00",
       endTime: "2023-09-07T22:00:00-06:00",
       isDaytime: false,
-      temperature: 74,
+      temperature: 39,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -438,7 +438,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T22:00:00-06:00",
       endTime: "2023-09-07T23:00:00-06:00",
       isDaytime: false,
-      temperature: 71,
+      temperature: 42,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -465,7 +465,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-07T23:00:00-06:00",
       endTime: "2023-09-08T00:00:00-06:00",
       isDaytime: false,
-      temperature: 68,
+      temperature: 46,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -492,7 +492,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T00:00:00-06:00",
       endTime: "2023-09-08T01:00:00-06:00",
       isDaytime: false,
-      temperature: 67,
+      temperature: 50,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -519,7 +519,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T01:00:00-06:00",
       endTime: "2023-09-08T02:00:00-06:00",
       isDaytime: false,
-      temperature: 65,
+      temperature: 54,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -546,7 +546,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T02:00:00-06:00",
       endTime: "2023-09-08T03:00:00-06:00",
       isDaytime: false,
-      temperature: 63,
+      temperature: 58,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -600,7 +600,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T04:00:00-06:00",
       endTime: "2023-09-08T05:00:00-06:00",
       isDaytime: false,
-      temperature: 60,
+      temperature: 67,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -627,7 +627,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T05:00:00-06:00",
       endTime: "2023-09-08T06:00:00-06:00",
       isDaytime: false,
-      temperature: 59,
+      temperature: 71,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -654,7 +654,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T06:00:00-06:00",
       endTime: "2023-09-08T07:00:00-06:00",
       isDaytime: true,
-      temperature: 59,
+      temperature: 75,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -681,7 +681,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T07:00:00-06:00",
       endTime: "2023-09-08T08:00:00-06:00",
       isDaytime: true,
-      temperature: 58,
+      temperature: 79,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -708,7 +708,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T08:00:00-06:00",
       endTime: "2023-09-08T09:00:00-06:00",
       isDaytime: true,
-      temperature: 62,
+      temperature: 82,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -735,7 +735,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T09:00:00-06:00",
       endTime: "2023-09-08T10:00:00-06:00",
       isDaytime: true,
-      temperature: 69,
+      temperature: 86,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -762,7 +762,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T10:00:00-06:00",
       endTime: "2023-09-08T11:00:00-06:00",
       isDaytime: true,
-      temperature: 74,
+      temperature: 90,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -789,7 +789,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T11:00:00-06:00",
       endTime: "2023-09-08T12:00:00-06:00",
       isDaytime: true,
-      temperature: 80,
+      temperature: 93,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -816,7 +816,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T12:00:00-06:00",
       endTime: "2023-09-08T13:00:00-06:00",
       isDaytime: true,
-      temperature: 84,
+      temperature: 96,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {
@@ -843,7 +843,7 @@ export const mockWeatherApiResponse = () => {
       startTime: "2023-09-08T13:00:00-06:00",
       endTime: "2023-09-08T14:00:00-06:00",
       isDaytime: true,
-      temperature: 87,
+      temperature: 100,
       temperatureUnit: "F",
       temperatureTrend: null,
       probabilityOfPrecipitation: {

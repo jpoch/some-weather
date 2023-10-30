@@ -248,17 +248,17 @@ const tempToC = (tempF) => {
 
 export const colorHelper = (temp) => {
   if (temp < 0) {
-    return "#0D40C1";
+    return "#0c459d";
   } else if (temp >= 0 && temp < 20) {
     return "#2F68D2";
   } else if (temp >= 20 && temp < 32) {
-    return "407CDA";
+    return "#0000ff";
   } else if (temp >= 32 && temp < 45) {
     return "#62A3EA";
   } else if (temp >= 45 && temp < 55) {
-    return "#84CBFB";
-  } else if (temp >= 55 && temp < 65) {
     return "#98BDCF";
+  } else if (temp >= 55 && temp < 65) {
+    return "#84CBFB";
   } else if (temp >= 65 && temp < 75) {
     return "#F59137";
   } else if (temp >= 75 && temp < 85) {
