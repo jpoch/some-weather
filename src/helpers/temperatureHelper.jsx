@@ -323,12 +323,15 @@ const plotBandHelper = (data) => {
 
 const createSecondaryChartData = (data, type, color) => {
   return data.map((hour) => {
+    let dewpointValue = hour.dewpoint ? hour.dewpoint.value : 0
+    let typeValue = hour[type] ? hour[type].value : 0
+
     return {
       x: Date.parse(hour.startTime),
       y:
         type === "dewpoint"
-          ? Math.round(tempToF(hour.dewpoint.value))
-          : Math.round(hour[type].value),
+          ? Math.round(tempToF(dewpointValue))
+          : Math.round(typeValue),
       color: color,
     };
   });
